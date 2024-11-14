@@ -24,7 +24,7 @@ const Page = () => {
       {page ? (
         <>
           <Text>{page.title}</Text>
-          <Text>{page.timestamp}</Text>
+          <Text>{page.createAt}</Text>
           <Image src={page.thumbnail} />
           <Text>{page.content}</Text>
         </>
