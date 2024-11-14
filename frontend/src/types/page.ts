@@ -1,5 +1,5 @@
 export type PageType = {
-  id: number;
+  id?: number;
   title: string;
   createAt: string;
   thumbnail: string;

@@ -12,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Top />} />
         <Route path="/list" element={<PageList />} />
+        <Route path="/page/" element={<Page />} />
         <Route path="/page/:id" element={<Page />} />
         <Route path="/edit/:id" element={<Edit />} />
       </Routes>
