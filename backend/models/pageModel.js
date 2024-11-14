@@ -16,12 +16,9 @@ module.exports = {
     return knex.select("*").from(PAGE_TABLE).limit(limit);
   },
   async create(page) {
-    console.log(page);
     // validateRequired(validProps(page));
-    console.log(page);
-    return knex
+    return knex(PAGE_TABLE)
       .insert(page)
-      .into(PAGE_TABLE)
       .returning("*")
       .then((res) => res[0]);
   },
