@@ -5,9 +5,9 @@
 
 exports.up = function (knex) {
   return knex.schema.createTable("pages", (table) => {
-    table.increments("id").primary();
+    table.increments("id").primary().notNullable();
     table.string("title").notNullable();
-    table.dateTime("createAt"); //TODO: 現在時間を入力する
+    table.dateTime("createAt").notNullable(); //TODO: 現在時間を入力する
     table.string("thumbnail"); //TODO: URLのバリデーションとかある？
     table.string("content");
   });
