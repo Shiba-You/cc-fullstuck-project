@@ -84,7 +84,7 @@ npx knex seed:make initial_pages --timestamp-filename-prefix
   ```json
   {
     status: 200,
-    page: PageType
+    page: PageType[]
   }
   ```
 - error
@@ -127,20 +127,27 @@ npx knex seed:make initial_pages --timestamp-filename-prefix
       text: "Request Page Not Found"
     }
     ```
-  - titleが空の時
+  - id, title, createAtが空の時
     ```json
     {
       status: 400
-      text: "Title is required fieldf"
+      text: "Id, Title, createAt is required field"
+    }
+    ```
+  - :idとbodyのidが一致しない時
+    ```json
+    {
+      status: 400
+      text: "Failed to update page"
     }
     ```
   - 通信エラー
     ```json
     {
       status: 500
-      text: "Failed to edit page"
+      text: "Failed to update page"
     }
     ```
 
 ##### POST /api/gpt
-- page.contentから画像を生成
+- page.contentから画像を生成 
