@@ -4,42 +4,21 @@ import CustomCard from "../../components/CustomCard";
 import usePageStore from "../../store/pageStore";
 import { PageStoreType } from "../../types/pageStore";
 import { useShallow } from "zustand/react/shallow";
+import { PageType } from "../../types/page";
 
 const selector = (state: PageStoreType) => ({
   pages: state.pages,
   setPages: state.setPages,
+  getPages: state.getPages,
 });
 
 const PageList = () => {
-  const { pages, setPages } = usePageStore(useShallow(selector));
+  const { pages, setPages, getPages } = usePageStore(useShallow(selector));
 
   useEffect(() => {
-    setPages([
-      {
-        id: 1,
-        title: "test title 1",
-        createAt: "2024/11/13",
-        thumbnail:
-          "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-        content: "test content",
-      },
-      {
-        id: 2,
-        title: "test title 2",
-        createAt: "2024/11/13",
-        thumbnail:
-          "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-        content: "test content",
-      },
-      {
-        id: 3,
-        title: "test title 3",
-        createAt: "2024/11/13",
-        thumbnail:
-          "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-        content: "test content",
-      },
-    ]);
+    (async () => {
+      setPages((await getPages()) as PageType[]);
+    })();
   }, []);
 
   return (
