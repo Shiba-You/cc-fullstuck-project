@@ -1,7 +1,7 @@
 export type PageType = {
   id: number;
   title: string;
-  timestamp: string;
+  createAt: string;
   thumbnail: string;
   content: string;
 };

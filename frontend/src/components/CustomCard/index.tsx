@@ -16,7 +16,7 @@ const CustomCard: React.FC<CustomCardProps> = ({ page }) => {
     <Card.Root maxW={"md"} onClick={() => openPage(page.id)}>
       <Card.Header>
         <Text>{page.title}</Text>
-        <Text>{page.timestamp}</Text>
+        <Text>{page.createAt}</Text>
       </Card.Header>
       <Image src={page.thumbnail} />
       <Card.Body>
