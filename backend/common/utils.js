@@ -31,4 +31,12 @@ module.exports = {
       return propsToCheck;
     };
   },
+
+  getRandomID(N) {
+    const S = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    const rand = Array.from(Array(N))
+      .map(() => S[Math.floor(Math.random() * S.length)])
+      .join("");
+    return rand;
+  },
 };

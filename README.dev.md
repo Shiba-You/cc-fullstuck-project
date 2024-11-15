@@ -150,4 +150,30 @@ npx knex seed:make initial_pages --timestamp-filename-prefix
     ```
 
 ##### POST /api/gpt
-- page.contentから画像を生成 
+- 概要
+  - page.contentから画像を生成 
+- param
+  ```json
+  {
+    content: string
+  }
+  ```
+- return
+  ```json
+  {
+    "image": [
+      {
+        "revised_prompt": string,
+        "url": string
+      }
+    ]
+  }
+  ```
+- error
+  - imageが作成できない時
+    ```json
+    {
+      status: 500
+      text: "Failed to generate image"
+    }
+    ```

@@ -1,5 +1,6 @@
 const express = require("express");
 const pagesRoutes = require("./routes/pagesRoutes");
+const gptRoutes = require("./routes/gptRoutes");
 const customLogger = require("./middleware/logger");
 const cors = require("cors");
 
@@ -16,6 +17,7 @@ const expressServer = () => {
   );
 
   app.use("/api/pages", pagesRoutes);
+  app.use("/api/gpt", gptRoutes);
 
   return app;
 };
