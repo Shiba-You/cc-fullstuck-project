@@ -88,13 +88,6 @@ npx knex seed:make initial_pages --timestamp-filename-prefix
   }
   ```
 - error
-  - :idのpageがない時
-    ```json
-    {
-      status: 404
-      text: "Request Page Not Found"
-    }
-    ```
   - 通信エラー
     ```json
     {
@@ -120,13 +113,6 @@ npx knex seed:make initial_pages --timestamp-filename-prefix
   }
   ```
 - error
-  - :idのpageがない時
-    ```json
-    {
-      status: 404
-      text: "Request Page Not Found"
-    }
-    ```
   - id, title, createAtが空の時
     ```json
     {

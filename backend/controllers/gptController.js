@@ -28,8 +28,7 @@ const generateImage = async (req, res) => {
       ContentType: image.headers.get("content-type"),
     };
 
-    const data = await s3.send(new PutObjectCommand(uploadParams));
-    console.log(data);
+    const _ = await s3.send(new PutObjectCommand(uploadParams));
     res.status(200).send({
       url: `https://${process.env.S3_BUCKET_NAME}.s3.ap-northeast-1.amazonaws.com/${imagePath}`,
     });

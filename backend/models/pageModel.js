@@ -23,7 +23,7 @@ module.exports = {
       .then((res) => res[0]);
   },
   async findById(id) {
-    return knex.select("*").from(PAGE_TABLE).where({ id }).first();
+    return knex.select("*").from(PAGE_TABLE).where({ id });
   },
   async update(page) {
     // validateRequired(validateProps(page));
