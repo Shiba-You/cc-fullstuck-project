@@ -88,13 +88,6 @@ npx knex seed:make initial_pages --timestamp-filename-prefix
   }
   ```
 - error
-  - :idのpageがない時
-    ```json
-    {
-      status: 404
-      text: "Request Page Not Found"
-    }
-    ```
   - 通信エラー
     ```json
     {
@@ -120,13 +113,6 @@ npx knex seed:make initial_pages --timestamp-filename-prefix
   }
   ```
 - error
-  - :idのpageがない時
-    ```json
-    {
-      status: 404
-      text: "Request Page Not Found"
-    }
-    ```
   - id, title, createAtが空の時
     ```json
     {
@@ -150,4 +136,25 @@ npx knex seed:make initial_pages --timestamp-filename-prefix
     ```
 
 ##### POST /api/gpt
-- page.contentから画像を生成 
+- 概要
+  - page.contentから画像を生成 
+- param
+  ```json
+  {
+    content: string
+  }
+  ```
+- return
+  ```json
+  {
+    "url": string
+  }
+  ```
+- error
+  - imageが作成できない時
+    ```json
+    {
+      status: 500
+      text: "Failed to generate image"
+    }
+    ```

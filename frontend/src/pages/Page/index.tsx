@@ -51,6 +51,19 @@ const Page = () => {
     }
   };
 
+  const generateImage = async () => {
+    const newImage = await fetch("http://localhost:3000/api/gpt", {
+      method: "POST",
+      mode: "cors",
+      body: JSON.stringify({ content: page.content }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((res) => res.json());
+    const newPage = { ...page, thumbnail: newImage.url };
+    setPage(newPage);
+  };
+
   const toggleIsEdit = async () => {
     if (isEdit) setPage((await getPageById(id)) as PageType);
     setIsEdit((currentIsEdit) => !currentIsEdit);
@@ -85,7 +98,9 @@ const Page = () => {
             {page?.thumbnail ? (
               <Image src={page.thumbnail} />
             ) : (
-              <Button disabled={!isEdit}>生成AIに絵を描いてもらう！</Button>
+              <Button disabled={!isEdit} onClick={() => generateImage()}>
+                生成AIに絵を描いてもらう！
+              </Button>
             )}
           </AspectRatio>
         </GridItem>
