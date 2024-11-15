@@ -161,12 +161,7 @@ npx knex seed:make initial_pages --timestamp-filename-prefix
 - return
   ```json
   {
-    "image": [
-      {
-        "revised_prompt": string,
-        "url": string
-      }
-    ]
+    "url": string
   }
   ```
 - error
