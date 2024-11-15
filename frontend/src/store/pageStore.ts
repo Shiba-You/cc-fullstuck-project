@@ -12,10 +12,12 @@ const usePageStore = create<PageStoreType>((set, get) => ({
     if (page) {
       return page;
     } else {
-      return await fetch(`http://localhost:3000/api/pages/${id}`, {
-        method: "GET",
-        mode: "cors",
-      }).then((res) => res.json());
+      return (
+        await fetch(`http://localhost:3000/api/pages/${id}`, {
+          method: "GET",
+          mode: "cors",
+        }).then((res) => res.json())
+      )[0];
     }
   },
   getPages: async () => {

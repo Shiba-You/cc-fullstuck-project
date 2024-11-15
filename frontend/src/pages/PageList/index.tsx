@@ -5,6 +5,7 @@ import usePageStore from "../../store/pageStore";
 import { PageStoreType } from "../../types/pageStore";
 import { useShallow } from "zustand/react/shallow";
 import { PageType } from "../../types/page";
+import HoverButton from "../../components/HoverButton";
 
 const selector = (state: PageStoreType) => ({
   pages: state.pages,
@@ -34,6 +35,7 @@ const PageList = () => {
       ) : (
         <Text>日記がまだありません。</Text>
       )}
+      <HoverButton />
     </>
   );
 };

@@ -4,10 +4,12 @@ import { Route, Routes } from "react-router-dom";
 import PageList from "./pages/PageList";
 import Top from "./pages";
 import Page from "./pages/Page";
+import { Header } from "./components/Header";
 
 function App() {
   return (
     <>
+      <Header />
       <Routes>
         <Route path="/" element={<Top />} />
         <Route path="/list" element={<PageList />} />
