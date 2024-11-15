@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
   AspectRatio,
+  Box,
   Button,
   Grid,
   GridItem,
@@ -16,6 +17,9 @@ import { PageType } from "../../types/page";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { dateToString } from "../../common/utils";
+import CustomButton from "../../components/CustomButton";
+import style from "./style.module.scss";
+import clsx from "clsx";
 
 const selector = (state: PageStoreType) => ({
   getPageById: state.getPageById,
@@ -75,13 +79,15 @@ const Page = () => {
   };
 
   return (
-    <>
+    <Box className={clsx(style.Box)}>
       <Grid w="100%" templateColumns="repeat(12, 1fr)" gap={4}>
         <GridItem colSpan={10}>
           <Input
             disabled={!isEdit}
             value={page.title}
             onChange={(e) => editPage("title", e.target.value)}
+            color="black"
+            className={clsx(style.Input)}
           />
         </GridItem>
         <GridItem colSpan={2}>
@@ -89,16 +95,21 @@ const Page = () => {
             disabled={!isEdit}
             selected={new Date(page.createAt)}
             onChange={(d) => editPage("createAt", d as Date)}
+            className={clsx(style.Input)}
           />
         </GridItem>
       </Grid>
-      <Grid>
-        <GridItem colSpan={12} rowSpan={3}>
-          <AspectRatio bg="bg.muted" ratio={2 / 1}>
+      <Grid justifyContent="center">
+        <GridItem colSpan={12} rowSpan={3} className={clsx(style.Image)}>
+          <AspectRatio bg="bg.muted" ratio={1 / 1}>
             {page?.thumbnail ? (
               <Image src={page.thumbnail} />
             ) : (
-              <Button disabled={!isEdit} onClick={() => generateImage()}>
+              <Button
+                disabled={!isEdit}
+                onClick={() => generateImage()}
+                className={clsx(style.AIButton)}
+              >
                 生成AIに絵を描いてもらう！
               </Button>
             )}
@@ -112,18 +123,20 @@ const Page = () => {
             value={page.content}
             onChange={(e) => editPage("content", e.target.value)}
             height={500}
+            color="black"
+            className={clsx(style.Textarea)}
           />
         </GridItem>
       </Grid>
       {isEdit ? (
         <>
-          <Button onClick={() => toggleIsEdit()}>中止する</Button>
-          <Button onClick={() => save()}>保存する</Button>
+          <CustomButton onClick={() => toggleIsEdit()} text={"中止する"} />
+          <CustomButton onClick={() => save()} text={"保存する"} />
         </>
       ) : (
-        <Button onClick={() => toggleIsEdit()}>編集する</Button>
+        <CustomButton onClick={() => toggleIsEdit()} text={"編集する"} />
       )}
-    </>
+    </Box>
   );
 };
 

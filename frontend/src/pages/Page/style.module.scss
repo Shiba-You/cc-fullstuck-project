@@ -1,0 +1,25 @@
+@import "../../styles/globals.scss";
+
+.Box {
+  background-color: $g-secondly-color;
+  padding: 30px;
+  border: black;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.AIButton {
+  background-color: $g-main-color;
+}
+
+.Image {
+  width: 640px;
+}
+
+.Input {
+  margin-bottom: 30px;
+}
+
+.Textarea {
+  margin-top: 30px;
+}

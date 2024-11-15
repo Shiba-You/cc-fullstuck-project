@@ -106,14 +106,6 @@ describe("pageの単体テスト", () => {
       expect(res.body).toEqual(mockPages[0]);
       expect(res.status).toEqual(200);
     });
-    // test(":idを持つpageがない時、ステータスコード 404 が返る", async () => {
-    //   spy = jest.spyOn(pageModel, "findById").mockImplementation(() => []);
-    //   const res = await request(app).get("/api/pages/100");
-    //   expect(JSON.parse(res.error.text).error).toEqual(
-    //     "Request Page Not Found"
-    //   );
-    //   expect(res.error.status).toEqual(404);
-    // });
     test("pageの作成に失敗した時、ステータスコード 500 が返る", async () => {
       spy = jest
         .spyOn(pageModel, "findById")
@@ -139,21 +131,7 @@ describe("pageの単体テスト", () => {
       expect(res.body).toEqual(updatedPage);
       expect(res.status).toEqual(200);
     });
-    // test(":idを持つpageがない時、ステータスコード 404 が返る", async () => {
-    //   const updatedPage = {
-    //     ...mockPages[0],
-    //     content: `(Edited) ${mockPages[0].content}`,
-    //     id: 100,
-    //   };
-    //   spy = jest.spyOn(pageModel, "update").mockImplementation(() => []);
-    //   const res = await request(app)
-    //     .put(`/api/pages/${updatedPage.id}`)
-    //     .send(updatedPage);
-    //   expect(JSON.parse(res.error.text).error).toEqual(
-    //     "Request Page Not Found"
-    //   );
-    //   expect(res.error.status).toEqual(404);
-    // });
+
     test("Id, Title, createAtが空の時、ステータスコード 400 が返る", async () => {
       const updatedPage = {
         ...mockPages[0],
